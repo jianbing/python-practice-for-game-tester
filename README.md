@@ -1,7 +1,10 @@
 python-practice-for-game-tester
 ---
 
-不少游戏测试同学在初学了Python后，不知道如何过渡应用到工作当中，所以建立了这个项目，整理了一些和游戏测试有关的Python入门练习题。
+不少游戏测试同学在初学了Python后，不知道如何应用到工作当中，所以建立了这个项目，整理了一些和游戏测试有关的Python入门练习题作为过渡练习。
+
+- [GM指令模版解析](#gm-order-template-parser)
+- [命令行工具](#cmd-tool)
 
 
 ## GM指令模版解析
@@ -50,4 +53,5 @@ add_item 1005,10
 - 打开指定文件夹
 
 参考界面效果，使用prettytable库
+
 ![bstest风格](https://github.com/jianbing/python-practice-for-game-tester/raw/master/img/cmdtool.png)
