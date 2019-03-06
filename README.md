@@ -1,7 +1,7 @@
 python-practice-for-game-tester
 ---
 
-不少游戏测试同学在初学了Python后，不知道如何过渡引用到工作当中，所以建立了这个项目，整理了和游戏测试有关的Python编程入门练习题。
+不少游戏测试同学在初学了Python后，不知道如何过渡应用到工作当中，所以建立了这个项目，整理了一些和游戏测试有关的Python入门练习题。
 
 
 ## GM指令模版解析
@@ -39,3 +39,15 @@ add_item 1001,10
 add_item 1004,10
 add_item 1005,10
 ```
+
+## 命令行工具
+
+制作一个命令行工具，将常见的工作辅助脚本整合起来，需要包括的功能有
+
+- SVN更新指定目录
+- SVN还原指定目录
+- 启动游戏客户端
+- 打开指定文件夹
+
+参考界面效果，使用prettytable库
+![bstest风格](https://github.com/jianbing/python-practice-for-game-tester/raw/master/img/cmdtool.png)
