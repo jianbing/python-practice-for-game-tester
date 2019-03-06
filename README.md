@@ -3,8 +3,11 @@ python-practice-for-game-tester
 
 不少游戏测试同学在初学了Python后，不知道如何应用到工作当中，所以建立了这个项目，整理了一些和游戏测试有关的Python入门练习题作为过渡练习。
 
-- [GM指令模版解析](#gm-order-template-parser)
-- [命令行工具](#cmd-tool)
+
+题目清单
+
+- [GM指令模版解析](#GM指令模版解析)
+- [命令行工具](#命令行工具)
 
 
 ## GM指令模版解析
