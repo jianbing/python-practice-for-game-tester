@@ -14,26 +14,21 @@ python-practice-for-game-tester
 
 ## GM指令模版解析
 
-`add_item item_id, num` 是一个增加道具的GM指令，如果我们想增加1001~1005这几个道具各10个，需要这么执行5次
+`add_item item_id, num` 是一个增加道具的GM指令，如果我们想增加1001~1003这几个道具各10个，需要这么执行3次，如果要加大量的道具，那执行的次数就更多了
 
 ```
 add_item 1001,10
 add_item 1002,10
 add_item 1003,10
-add_item 1004,10
-add_item 1005,10
 ```
 为了提升效率，设计GM指令模版，需要满足以下几种形式
 
-
 ```
-add_item {{1001 to 1005}},10
+add_item {{1001 to 1003}},10
 解析为：
 add_item 1001,10
 add_item 1002,10
 add_item 1003,10
-add_item 1004,10
-add_item 1005,10
 
 add_item {{1001,1003,1006}},10
 解析为：
