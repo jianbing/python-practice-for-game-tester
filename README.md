@@ -8,7 +8,9 @@ python-practice-for-game-tester
 
 - [GM指令模版解析](#GM指令模版解析)
 - [命令行工具](#命令行工具)
-
+- [安卓APK安装器](#安卓APK安装器)
+- [安卓CPU，内存监控工具](#安卓CPU，内存监控工具)
+- [PC游戏客户端Monkey测试工具](#PC游戏客户端Monkey测试工具)
 
 ## GM指令模版解析
 
@@ -57,4 +59,33 @@ add_item 1005,10
 
 参考界面效果，使用prettytable库
 
-![bstest风格](https://github.com/jianbing/python-practice-for-game-tester/raw/master/img/cmdtool.png)
+![](https://github.com/jianbing/python-practice-for-game-tester/raw/master/img/cmdtool.png)
+
+## 安卓APK安装器
+
+遍历文件夹，获取全部的APK文件，依次调用`adb install`命令安装到测试机中
+
+```
+遍历可以使用 os.walk 函数
+```
+
+
+## 安卓CPU，内存监控工具
+
+通过adb命令，获取APP的CPU和内存占用，使用[pyecharts](https://github.com/pyecharts/pyecharts)库，生成测试结果图表
+
+```
+获取内存占用：
+adb shell dumpsys meminfo package_name
+
+获取CPU占用：
+adb shell cat /proc/pid/stat
+```
+
+## PC游戏客户端Monkey测试工具
+
+制作一个PC游戏游戏客户端可用的Monkey测试工具，功能上模拟adb monkey。
+
+```
+可以试试 PyAutoGUI 这个库
+```
