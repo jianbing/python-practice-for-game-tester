@@ -14,7 +14,7 @@ python-practice-for-game-tester
 
 ## GM指令模版解析
 
-`add_item item_id, num` 是一个增加道具的GM指令，如果我们想增加1001~1005这几个道具各10个，需要这么执行5次。
+`add_item item_id, num` 是一个增加道具的GM指令，如果我们想增加1001~1005这几个道具各10个，需要这么执行5次
 
 ```
 add_item 1001,10
@@ -84,7 +84,7 @@ adb shell cat /proc/pid/stat
 
 ## PC游戏客户端Monkey测试工具
 
-制作一个PC游戏游戏客户端可用的Monkey测试工具，功能上模拟adb monkey。
+制作一个PC游戏游戏客户端可用的Monkey测试工具，功能上模拟adb monkey，支持单击，双击，长按，拖动等操作，可配置各操作的百分比
 
 ```
 可以试试 PyAutoGUI 这个库
