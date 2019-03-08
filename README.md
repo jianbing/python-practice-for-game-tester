@@ -15,6 +15,8 @@ python-practice-for-game-tester
 - [安卓CPU，内存监控工具](#安卓CPU，内存监控工具)
 - [安卓截图工具](#安卓截图工具)
 - [PC游戏客户端Monkey测试工具](#PC游戏客户端Monkey测试工具)
+- [生成奖励配置](#生成奖励配置)
+- [配置表关键字搜索](#配置表关键字搜索)
 
 > 建议使用Py3.6以上版本，IDE推荐Pycharm
 
@@ -87,7 +89,7 @@ adb shell cat /proc/pid/stat
 
 通过adb，对当前安卓界面进行截图，需要支持 `adb screencap` 和 minicap 两个方式，截图后导出截图文件到指定文件夹
 
-> [minicap](https://github.com/openstf/minicap)是STF的一个工具，官方定义是：Stream real-time screen capture data out of Android devices。
+> [minicap](https://github.com/openstf/minicap)是STF的一个工具，截图速度是screencap方式的几十倍，官方定义是：Stream real-time screen capture data out of Android devices。
 
 ## PC游戏客户端Monkey测试工具
 
@@ -96,3 +98,45 @@ adb shell cat /proc/pid/stat
 ```
 可以试试 PyAutoGUI 这个库
 ```
+
+## 生成奖励配置
+
+编写一个脚本，读取下图的[奖励配置Excel文件](https://github.com/jianbing/python-practice-for-game-tester/tree/master/res/生成奖励配置)
+
+![](https://github.com/jianbing/python-practice-for-game-tester/raw/master/img/excel.png)
+
+解析为下边的Lua格式，`reward_type`固定为`REWARD_TYPE_ITEM`，并保存到`reward.lua`文件中 
+
+```
+{
+    [1] = {
+      [1] = {reward_type = REWARD_TYPE_ITEM, item_type = 2001, item_count = 80,},
+      [2] = {reward_type = REWARD_TYPE_ITEM, item_type = 2004, item_count = 80,},
+      [3] = {reward_type = REWARD_TYPE_ITEM, item_type = 3001, item_count = 25,},
+      [4] = {reward_type = REWARD_TYPE_ITEM, item_type = 6101, item_count = 11,},
+    },
+    [2] = {
+      [1] = {reward_type = REWARD_TYPE_ITEM, item_type = 2001, item_count = 70,},
+      [2] = {reward_type = REWARD_TYPE_ITEM, item_type = 2004, item_count = 70,},
+      [3] = {reward_type = REWARD_TYPE_ITEM, item_type = 3002, item_count = 20,},
+    },
+    [3] = {
+      [1] = {reward_type = REWARD_TYPE_ITEM, item_type = 2001, item_count = 60,},
+      [2] = {reward_type = REWARD_TYPE_ITEM, item_type = 2004, item_count = 60,},
+      [3] = {reward_type = REWARD_TYPE_ITEM, item_type = 3003, item_count = 15,},
+      [4] = {reward_type = REWARD_TYPE_ITEM, item_type = 6103, item_count = 13,},
+    },
+}
+```
+
+## 配置表关键字搜索
+
+根据输入的关键字，在配置表目录下进行遍历，讲包含该关键字的配置表路径，关键字所在行数，及附近几行的内容打印出来，支持`xml,lua,json`等文本格式即可
+
+```
+应用场景
+
+策划：我把配置表里边的XXX道具全删了，你看看有没有漏的
+测试：噢，我跑下脚本
+```
+
