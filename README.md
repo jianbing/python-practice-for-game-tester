@@ -1,7 +1,10 @@
 python-practice-for-game-tester
 ---
 
-不少游戏测试同学在初学了Python后，不知道如何应用到工作当中，所以建立了这个项目，整理了一些和游戏测试有关的Python入门练习题作为过渡练习。
+不少游戏测试同学在初学了Python，掌握了基础的语法后，不知道如何应用到工作当中，所以建立了这个项目，整理了一些和游戏测试有关的Python入门练习题作为过渡练习。
+
+> 题库完善后，会开放提交答案到本仓库~
+
 
 
 题目清单
@@ -10,7 +13,10 @@ python-practice-for-game-tester
 - [命令行工具](#命令行工具)
 - [安卓APK安装器](#安卓APK安装器)
 - [安卓CPU，内存监控工具](#安卓CPU，内存监控工具)
+- [安卓截图工具](#安卓截图工具)
 - [PC游戏客户端Monkey测试工具](#PC游戏客户端Monkey测试工具)
+
+> 建议使用Py3.6以上版本，IDE推荐Pycharm
 
 ## GM指令模版解析
 
@@ -76,6 +82,12 @@ adb shell dumpsys meminfo package_name
 获取CPU占用：
 adb shell cat /proc/pid/stat
 ```
+
+## 安卓截图工具
+
+通过adb，对当前安卓界面进行截图，需要支持 `adb screencap` 和 minicap 两个方式，截图后导出截图文件到指定文件夹
+
+> [minicap](https://github.com/openstf/minicap)是STF的一个工具，官方定义是：Stream real-time screen capture data out of Android devices。
 
 ## PC游戏客户端Monkey测试工具
 
