@@ -20,7 +20,7 @@
 
 ### 001-GM指令模版解析
 
-`add_item item_id, num` 是增加指定道具的GM指令，如果我们想增加1001~1003这几个道具各10个，需要这么执行3次，如果要加大量的道具，那执行的次数就更多了
+`add_item item_id, num` 是增加指定道具的GM指令，要增加1001~1003道具各10个，需要执行3次，如果要加大量的道具，那执行的次数就更多了
 
 ```
 add_item 1001,10
@@ -60,9 +60,11 @@ add_item 1005,10
 
 ```
 这几个功能都可以通过Python调用CMD来实现，如os.system, os.popen, subprocess.Popen等
+
+命令行界面可以使用prettytable库
 ```
 
-参考界面效果，使用`prettytable`库
+参考效果
 
 ![](https://github.com/jianbing/python-practice-for-game-tester/raw/master/img/cmdtool.png)
 
@@ -72,11 +74,15 @@ add_item 1005,10
 
 ```
 遍历可以使用 os.walk 函数
+
+有些安卓手机会弹窗确认是否安装，本题可先忽略这个情况，默认为adb install可以静默安装
 ```
 
 ### 004-安卓截图工具
 
-通过adb，对当前安卓界面进行截图，支持 `adb screencap` 和 minicap 两个方式，截图后导出截图文件到指定文件夹，支持使用`pillow`库对截图文件的尺寸进行压缩
+通过adb，对当前安卓界面进行截图，支持 `adb screencap` 和 `minicap` 两个方式，导出截图文件到指定文件夹
+
+支持使用`pillow`库对截图文件的尺寸进行压缩
 
 > [minicap](https://github.com/openstf/minicap)是STF的一个工具，截图速度是screencap方式的几十倍，官方定义是：Stream real-time screen capture data out of Android devices。
 
@@ -96,7 +102,7 @@ adb shell cat /proc/pid/stat
 
 ### 006-PC游戏客户端Monkey测试工具
 
-制作一个PC游戏游戏客户端可用的Monkey测试工具，功能上模拟adb monkey，支持单击，双击，长按，拖动等操作，可配置各操作的百分比
+制作一个PC游戏客户端可用的Monkey测试工具，功能上模拟adb monkey，支持单击，双击，长按，拖动等操作，可配置各操作的百分比
 
 ```
 可以试试 PyAutoGUI 这个库
@@ -169,3 +175,5 @@ adb shell cat /proc/pid/stat
 - 为每个要上传代码的题目建立一个文件夹，以题目的编号命名，如“001”
 - 编写代码，自测通过
 - Pull Request
+
+Enjoy Coding~
