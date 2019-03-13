@@ -11,7 +11,7 @@
 # @Licence  :     <your licence>
 import os
 
-catalog = ""  # 设置路径，如果不设置则为当前路径
+catalog = "E:\Code\\test_apk"  # 设置路径，如果不设置则为当前路径
 
 
 class Folder():
@@ -25,8 +25,11 @@ class Folder():
 
     def install(self):
         for i in self.apk_list:
-            if str(i)[-4:0] == ".apk":
-                os.system("adb install {0}".format(i))
+            print i
+            if str(i)[-4:] == ".apk":
+                apk_catalog = self.catalog + "\\" + i
+                print apk_catalog
+                os.system("adb install -r {0}".format(apk_catalog))
 
 z = Folder()
 z.install()
