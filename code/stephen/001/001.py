@@ -14,13 +14,17 @@ import re
 
 class GM():
     def __init__(self, cmd_string):
+        """
+        初始化cmd_list，如果没有“add_item”，判定输入错误
+        :param cmd_string:
+        """
         self.cmd_list = re.split("{{|}}", cmd_string)
         if "add_item " not in self.cmd_list:
             raise IOError("输入错误")
 
     def analysis(self):
-        count = self.cmd_list[2]
-        props = self.cmd_list[1]
+        count = self.cmd_list[2]  # 道具数量
+        props = self.cmd_list[1]  # 道具id列表
         if "to" in props:
             operation = self.cmd_list[1].split(" ")
             start, end = int(operation[0]), int(operation[2])
