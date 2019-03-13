@@ -6,7 +6,7 @@ apkpath_list = []
 
 def get_all_apk(path: str)-> list:
 	'''
-
+	遍历文件目录把所有apk的路径存入list
 	:param path:
 	:return:
 	'''
@@ -21,6 +21,11 @@ def get_all_apk(path: str)-> list:
 			get_all_apk(filepath)
 
 def install_apk(apklist: list):
+	'''
+	遍历存放apk绝对路径的list 调用adb命令
+	:param apklist:
+	:return:
+	'''
 	for apk in apklist:
 		os.system('adb install -r' + apk)
 
