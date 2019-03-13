@@ -11,7 +11,7 @@
 # @Licence  :     <your licence>
 import os
 
-catalog = ""
+catalog = ""  # 设置路径，如果不设置则为当前路径
 
 
 class Folder():
