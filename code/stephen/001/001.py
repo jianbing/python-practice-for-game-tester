@@ -7,7 +7,7 @@
 # @File     : 001.py
 # @Purpose  :
 # @Software : PyCharm
-# @Copyright:   (c) 张建 2019
+# @Copyright:   (c) Stephen 2019
 # @Licence  :     <your licence>
 import re
 
