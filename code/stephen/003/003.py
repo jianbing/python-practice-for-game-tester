@@ -31,5 +31,6 @@ class Folder():
                 print apk_catalog
                 os.system("adb install -r {0}".format(apk_catalog))
 
+
 z = Folder()
 z.install()

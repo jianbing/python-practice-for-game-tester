@@ -9,5 +9,12 @@
 # @Software : PyCharm
 # @Copyright:   (c) Stephen 2019
 # @Licence  :     <your licence>
+import os, time
 
-import stf
+output_file = ""
+if output_file == "":
+    output_file = os.getcwd()
+
+file_name = time.time()
+os.system("adb shell /system/bin/screencap -p /sdcard/%s.png" % file_name)
+os.system("adb pull /sdcard/%s.png %s" % (file_name, output_file) )
