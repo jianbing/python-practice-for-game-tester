@@ -23,7 +23,6 @@ def has_to_parse(gm_order: str):
     order_parse = re.compile('(.*){{(.*)}},(.*)')
     gm_oder_name, gm_oder_id_list, gm_order_num = order_parse.findall(gm_order)[0]
     first_num, last_num = gm_oder_id_list.strip().split('to')
-    # for interval in range(int(last_num)-int(first_num)+1):
     for gm_oder_id in range(int(first_num), int(last_num) + 1):
         print(gm_oder_name + ' ' + str(gm_oder_id) + ',' + gm_order_num)
 
