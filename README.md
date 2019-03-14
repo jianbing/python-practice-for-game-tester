@@ -86,6 +86,29 @@ add_item 1005,10
 
 > [minicap](https://github.com/openstf/minicap)是STF的一个工具，截图速度是screencap方式的几十倍，官方定义是：Stream real-time screen capture data out of Android devices。
 
+```python
+# minicap的安装可以参考这里 https://github.com/openatx/uiautomator2/blob/master/uiautomator2/__main__.py
+
+def install_minicap(self):
+    if self.arch == 'x86':
+        log.info("skip install minicap on emulator")
+        return
+    sdk = self.sdk
+    if self.pre and self.pre != "0":
+        sdk = sdk + self.pre
+    base_url = GITHUB_BASEURL + \
+        "/stf-binaries/raw/master/node_modules/minicap-prebuilt/prebuilt/"
+    log.debug("install minicap.so")
+    url = base_url + self.abi + "/lib/android-" + sdk + "/minicap.so"
+    path = cache_download(url)
+    exedir = self.get_executable_dir()
+    minicapdst = "%s/%s" % (exedir, 'minicap.so')
+    self.push(path, minicapdst)
+    log.info("install minicap")
+    url = base_url + self.abi + "/bin/minicap"
+    path = cache_download(url)
+    self.push(path, exedir + "/minicap", 0o755)
+```
 
 ### 005-安卓CPU，内存监控工具
 
