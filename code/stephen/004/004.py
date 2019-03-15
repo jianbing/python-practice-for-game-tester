@@ -17,4 +17,4 @@ if output_file == "":
 
 file_name = time.time()
 os.system("adb shell /system/bin/screencap -p /sdcard/%s.png" % file_name)
-os.system("adb pull /sdcard/%s.png %s" % (file_name, output_file) )
+os.system("adb pull /sdcard/%s.png %s" % (file_name, output_file))
