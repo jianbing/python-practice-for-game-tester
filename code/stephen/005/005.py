@@ -68,12 +68,12 @@ class Phone():
         cpu_usage = 100 * (thread_time() - thread_time()) / (cpu_time() - cpu_time())
         return cpu_usage * self.count
 
-    def psstotal_test(self, test_time, duration):
+    def total_test(self, test_time, duration):
         """
-        测试psstotal
+        测试pss和cpu
         :param test_time: 测试时间，单位s
         :param duration: 测试刷新间隔
-        :return: 时间list， psstotal的list
+        :return: 时间list， psstotal数据， cpu数据的list
         """
         i = 0
         time_init = int(time.time())
@@ -117,15 +117,15 @@ class Phone():
         :param duration: 刷新间隔
         :return:
         """
-        pss_list = self.psstotal_test(test_time=test_time, duration=duration)
+        pss_list = self.total_test(test_time=test_time, duration=duration)
         attr = pss_list[1]
         v1 = pss_list[0]
         v2 = pss_list[2]
         line = Line(game_name)
         line.add("PSS_total(M)", attr, v1, mark_point=["max"])
-        line.add("CPU(%)", attr, v2, mark_point=["max"] )
+        line.add("CPU(%)", attr, v2, mark_point=["max"])
         line.render()
 
 
 p = Phone()
-p.graphic(30, 1)
+p.graphic(60, 1)

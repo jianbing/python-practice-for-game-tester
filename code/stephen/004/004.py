@@ -11,6 +11,7 @@
 # @Licence  :     <your licence>
 import os, time
 
+# 输出文件夹， 如果不填写则为当前文件夹
 output_file = ""
 if output_file == "":
     output_file = os.getcwd()
