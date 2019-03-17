@@ -86,6 +86,29 @@ add_item 1005,10
 
 > [minicap](https://github.com/openstf/minicap)是STF的一个工具，截图速度是screencap方式的几十倍，官方定义是：Stream real-time screen capture data out of Android devices。
 
+```python
+# minicap的安装可以参考这里 https://github.com/openatx/uiautomator2/blob/master/uiautomator2/__main__.py
+
+def install_minicap(self):
+    if self.arch == 'x86':
+        log.info("skip install minicap on emulator")
+        return
+    sdk = self.sdk
+    if self.pre and self.pre != "0":
+        sdk = sdk + self.pre
+    base_url = GITHUB_BASEURL + \
+        "/stf-binaries/raw/master/node_modules/minicap-prebuilt/prebuilt/"
+    log.debug("install minicap.so")
+    url = base_url + self.abi + "/lib/android-" + sdk + "/minicap.so"
+    path = cache_download(url)
+    exedir = self.get_executable_dir()
+    minicapdst = "%s/%s" % (exedir, 'minicap.so')
+    self.push(path, minicapdst)
+    log.info("install minicap")
+    url = base_url + self.abi + "/bin/minicap"
+    path = cache_download(url)
+    self.push(path, exedir + "/minicap", 0o755)
+```
 
 ### 005-安卓CPU，内存监控工具
 
@@ -149,7 +172,7 @@ adb shell cat /proc/pid/stat
 
 ### 009-配置表关键字搜索
 
-根据输入的关键字，在配置表目录下进行遍历，讲包含该关键字的配置表路径，关键字所在行数，及附近几行的内容打印出来，支持`xml,lua,json`等文本格式即可
+根据输入的关键字，在配置表目录下进行遍历，讲包含该关键字的配置表路径，关键字所在行数，及附近几行的内容打印出来，支持`xml,lua,json`等文本格式
 
 ```
 应用场景
@@ -163,7 +186,7 @@ adb shell cat /proc/pid/stat
 制作一个网页，网页会展示已经上传到网页目录下的APK文件，包括文件名字，文件大小，修改日期，下载二维码，使用手机扫描该二维码，会触发下载。
 
 ```
-网页可以基于Flask框架运行，二维码生成可以使用qrcode库
+网页可以基于Flask，或者Django框架运行，二维码生成推荐使用qrcode库
 ```
 
 ## 如何提交练习代码
