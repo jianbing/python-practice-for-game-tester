@@ -37,7 +37,7 @@ class GM():
             prop_list = self.cmd_list[1].split(",")
         command_list = map(lambda x: "add_item " + str(x) + count, prop_list)
         for i in command_list:
-            print i
+            print(i)
 
 
 test1 = GM("add_item {{1001 to 1003}},10")
