@@ -20,15 +20,15 @@ class Folder():
             self.catalog = os.getcwd()
         else:
             self.catalog = catalog
-        print self.catalog
+        print(self.catalog)
         self.apk_list = os.listdir(self.catalog)
 
     def install(self):
         for i in self.apk_list:
-            print i
+            print(i)
             if str(i)[-4:] == ".apk":
                 apk_catalog = self.catalog + "\\" + i
-                print apk_catalog
+                print(apk_catalog)
                 os.system("adb install -r {0}".format(apk_catalog))
 
 

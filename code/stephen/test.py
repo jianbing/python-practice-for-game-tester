@@ -33,7 +33,7 @@ count = 0
 for i in data:
     if "cpu" in i:
         count += 1
-        print i
+
     else:
         count -= 1
         break

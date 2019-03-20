@@ -25,7 +25,7 @@ class Svn():
         self.tb.add_row([2, "SVN还原主干"])
         self.tb.add_row([3, "启动游戏客户端"])
         self.tb.add_row([4, "打开主干目录"])
-        print self.tb
+        print(self.tb)
         self.operation = input("选择指令:")
         if self.operation not in [1, 2, 3, 4]:
             print ("输入错误")

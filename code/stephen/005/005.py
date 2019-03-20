@@ -30,7 +30,7 @@ class Phone():
         self.mem.close()
         try:
             self.pid = int(self.pid_info.split(" ")[4])
-            print ("pid:", self.pid)
+            print("pid:", self.pid)
         except:
             raise IOError("检查adb连接并启动游戏")
 
@@ -45,12 +45,14 @@ class Phone():
                 count -= 1
                 break
         self.count = count
+        print("进程数：", self.count)
 
     def cpu_test(self):
         """
         测试cpu数据，总体数据根据乘以核
         :return:
         """
+
         def cpu_time():
             f = os.popen("adb shell cat /proc/stat")
             data = f.readlines()
@@ -65,7 +67,11 @@ class Phone():
             processCPUtime = sum(map(lambda x: int(x), [data[13], data[14], data[15], data[16]]))
             return processCPUtime
 
-        cpu_usage = 100 * (thread_time() - thread_time()) / (cpu_time() - cpu_time())
+        cpu_time1, thread_time1 = cpu_time(), thread_time()
+        cpu_time2, thread_time2 = cpu_time(), thread_time()
+
+        cpu_usage = 100 * (thread_time2 - thread_time1) / (cpu_time2 - cpu_time1)
+        print(cpu_usage)
         return cpu_usage * self.count
 
     def total_test(self, test_time, duration):
@@ -88,16 +94,14 @@ class Phone():
                 if "TOTAL" in item:
                     pss_info = item
                     break
-
-            cpu_info = self.cpu_test()
+            cpu_info = float("%.2f" % self.cpu_test())
             pss = float(re.findall("\d+\d|\d", pss_info)[0]) / 1000
             psstotal = float("%.2f" % pss)
             current_time = int(time.time())
             # print ("测试倒计时:%s秒"%(current_time-time_init))
             time_test = time.strftime("%H:%M:%S")
             # time_test = time.strftime("%Y-%m-%d %H:%M:%S")
-            print time_test, ("PssTotal="), psstotal
-            print ("CPU="), cpu_info
+            print(time_test, "PssTotal=", psstotal, "CPU=", cpu_info)
             psslist.append(psstotal)
             time_list.append(time_test)
             cpu_list.append(cpu_info)
@@ -105,9 +109,9 @@ class Phone():
             i += 1
         maxlist = sorted(psslist, reverse=True)
         average_pss = sum(psslist) / i
-        print ("平均PssTotal"), average_pss
-        print ("最高PssTotal"), maxlist[0]
-        print ("最低PSSTotal"), maxlist[-1]
+        print("平均PssTotal", average_pss)
+        print("最高PssTotal", maxlist[0])
+        print("最低PSSTotal", maxlist[-1])
         return [psslist, time_list, cpu_list]
 
     def graphic(self, test_time=600, duration=2):
@@ -128,4 +132,9 @@ class Phone():
 
 
 p = Phone()
-p.graphic(60, 1)
+p.graphic(20, 1)
+
+# p.cpu_test()
+
+# z = os.popen("adb shell cat /proc/15402/stat")
+# print(z.readlines())
